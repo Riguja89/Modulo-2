@@ -11,7 +11,7 @@ console.log(alerta);
   return <div>Search Bar Component
     <br/>
     
-    <input id="cityName" type="text" value="Pamplona" ></input>
+    <input id="cityName" type="text" placeholder='Ciudad ...'></input>
     <button onClick={handleClick}>Agregar</button>
     
     <br/>
