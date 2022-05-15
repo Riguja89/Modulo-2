@@ -1,0 +1,10 @@
+.searchbar{
+    backdrop-filter: blur(10px);
+    font-family: 'Roboto Flex', sans-serif;
+}
+.input{
+    border-radius: 4px;
+}
+.btn{
+    border-radius: 4px;
+}

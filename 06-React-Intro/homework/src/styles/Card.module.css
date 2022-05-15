@@ -1,0 +1,23 @@
+.btn{
+    background-color: gray;
+    width: 25px;
+    border-radius: 10px;
+    margin: 5px;
+    position: relative;
+    right: -150px;
+    color: white;
+    display: flex;
+}
+.btn:hover{
+    color: gray;
+    background-color: white;
+}
+.card{
+    color: white;
+    font-family: 'Roboto Flex', sans-serif;
+    width: 200px;
+    border-radius: 10px;
+    align-self: center;
+    backdrop-filter: blur(6px);
+    margin-right: 20px;
+}

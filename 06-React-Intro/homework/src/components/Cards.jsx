@@ -1,9 +1,10 @@
 import React from 'react';
 import Card from './Card.jsx';
+import s from '../styles/Cards.module.css';
 export default function Cards({cities}) {
   // acá va tu código
   // tip, podés usar un map
-  return <div >
+  return <div className={s.Cards}>
   {
     cities.map(p=><Card 
       max={p.main.temp_max}

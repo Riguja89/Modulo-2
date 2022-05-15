@@ -1,5 +1,5 @@
 import React from 'react';
-
+import s from '../styles/Card.module.css';
 export default function Card({max, min, name,img, onClose }) {
   // acá va tu código
 const url=`http://openweathermap.org/img/wn/${img}@2x.png`
@@ -7,10 +7,10 @@ const url=`http://openweathermap.org/img/wn/${img}@2x.png`
 var handleClick = () => {
   onClose();
 }
-  return <div>
-    <div onClick={handleClick} >
+  return <div className={s.card}>
+    <button onClick={handleClick} className={`${s.btn}`}>
       X
-    </div>
+    </button>
     <h1>{name}</h1>
     <h2> Min {min}</h2>
     <h2>Max {max}</h2>

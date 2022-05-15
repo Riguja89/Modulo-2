@@ -1,5 +1,5 @@
 import React from 'react';
-
+import s from '../styles/Searchbar.module.css';
 export default function SearchBar(alerta) {
   // acá va tu código
 console.log(alerta);
@@ -8,11 +8,11 @@ console.log(alerta);
   }
  
 
-  return <div>Search Bar Component
+  return <div className={s.searchbar}>Search Bar Component
     <br/>
     
-    <input id="cityName" type="text" placeholder='Ciudad ...'></input>
-    <button onClick={handleClick}>Agregar</button>
+    <input id="cityName" type="text" placeholder='Ciudad ...' className={s.input}></input>
+    <button onClick={handleClick} className={s.btn}>Agregar</button>
     
     <br/>
     <br/>
