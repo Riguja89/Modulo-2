@@ -2,7 +2,7 @@ import React from 'react';
 import s from '../styles/Searchbar.module.css';
 export default function SearchBar(alerta) {
   // acá va tu código
-console.log(alerta);
+//console.log(alerta);
  var handleClick = () => {
     alerta.onSearch(document.getElementById("cityName").value);
   }
