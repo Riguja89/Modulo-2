@@ -1,8 +1,14 @@
 .logoHenry {
   margin-right: 20px;
+  margin-left: 20px;
 }
 .nav{
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   display: flex;
   color: white;
+  height: 60px;
+
+}
+.title{
+ margin-top: auto;
 }

@@ -18,6 +18,8 @@
     width: 200px;
     border-radius: 10px;
     align-self: center;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
     margin-right: 20px;
+    border-style:inset;
+    border-color: gray;
 }
