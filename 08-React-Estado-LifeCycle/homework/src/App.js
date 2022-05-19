@@ -17,7 +17,7 @@ export default function App() {
         <Nav onSearch={onSearch}
         />
       </div>
-      <hr />
+      
       {/* <div>
         <Card
           // max={Cairns.main.temp_max}
@@ -28,7 +28,7 @@ export default function App() {
         />
       </div>
       */}
-      <hr />
+     
       <div>
         <Cards
            cities={cities}

@@ -9,12 +9,9 @@ export default function SearchBar(alerta) {
  
 
   return <div className={s.searchbar}>Search Bar Component
-    <br/>
-    
+     
     <input id="cityName" type="text" placeholder='Ciudad ...' className={s.input}></input>
     <button onClick={handleClick} className={s.btn}>Agregar</button>
-    
-    <br/>
-    <br/>
+
   </div>
 };
