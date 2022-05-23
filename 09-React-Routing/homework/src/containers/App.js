@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import './App.css';
 import Nav from '../components/Nav.jsx';
 import Cards from '../components/Cards.jsx';
-
+import { Route, Router} from 'react-router-dom';
+import About from '../components/About.jsx';
 const apiKey = '4ae2636d8dfbdc3044bede63951a019b';
 
 function App() {
@@ -44,18 +45,27 @@ function App() {
         return null;
     }
   }
-  return (
+
+
+  const Root = (
     <div className="App">
-      <Nav onSearch={onSearch}/>
-      <div>
-        <Cards
-          cities={cities}
-          onClose={onClose}
-        />
-      </div>
-      <hr />
-    </div>
+
+    <Route
+    path='/'
+    render={() => <Nav onSearch={onSearch} />}
+/>
+<Route
+    path='/about'
+    component={About}
+/>
+
+
+  </div>
+ );
+
+  return (Root
   );
 }
 
 export default App;
+
