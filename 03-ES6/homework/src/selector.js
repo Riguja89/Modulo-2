@@ -12,10 +12,10 @@ var traverseDomAndCollectElements = function(matchFunc, startEl ) {
   if (matchFunc(startEl)){resultSet.push(startEl)}
   if (startEl.children.length>0){
       for(var i=0;i<startEl.children.length;i++){
-       resultSet.concat(traverseDomAndCollectElements(matchFunc,startEl.children[i]));
+        resultSet=resultSet.concat(traverseDomAndCollectElements(matchFunc,startEl.children[i]));
       }
 
-    //console.log(startEl.children.length);
+    console.log(startEl.children.length);
    }
   
 return resultSet;
@@ -29,7 +29,10 @@ var selectorTypeMatcher = function(selector) {
   // tu código aquí
   if (selector[0]==='#'){return('id')}
   else if(selector[0]==='.'){return('class')}
+  else if (selector.includes('>') && selector.split('>').length===2){return ('childcomb')}
+  else if (selector.includes(' ') && selector.split(' ').length===2){return ('descecomb')}
   else if(!selector.includes('.')){return('tag')}
+  
   else return('tag.class')
 };
 
@@ -62,6 +65,34 @@ var matchFunctionMaker = function(selector) {
       return el.tagName && (el.tagName.toLowerCase() === selector.toLowerCase());
     };
   }
+  else if (selectorType === "childcomb") {
+    matchFunction = function (el) {
+      [tag, child]=selector.split(' > ');
+      console.log(tag, child);
+      return el.tagName && (el.tagName.toLowerCase() === child.toLowerCase())&&(el.parentElement.tagName.toLowerCase()===tag.toLowerCase());
+    };
+  }
+  else if (selectorType === "descecomb") {
+    matchFunction = function (el) {
+      [tag, child]=selector.split(' ');
+      console.log(tag, child);
+
+      var veriPadre = function (el2,tag){
+        var respuesta=false;
+        if((el2.parentElement.tagName.toLowerCase()===tag.toLowerCase()))
+        {return true;}
+        else if (el2.parentElement!=null){
+          respuesta= veriPadre(el2.parentElement,tag);
+        }
+        return respuesta;
+      };
+
+      if(el.tagName && (el.tagName.toLowerCase() === child.toLowerCase())){
+        return veriPadre(el,tag);
+      }else return false;
+    };
+  }
+  
   return matchFunction;
 };
 
@@ -69,5 +100,6 @@ var $ = function(selector) {
   var elements;
   var selectorMatchFunc = matchFunctionMaker(selector);
   elements = traverseDomAndCollectElements(selectorMatchFunc);
+  console.log(elements);
   return elements;
 };
