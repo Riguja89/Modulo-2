@@ -1,5 +1,6 @@
 // (function () {
-  const EventEmitter=require("./event-emitter");
+import EventEmitter from "./event-emitter";
+  //const EventEmitter=require("./event-emitter");
   const whiteboard = new EventEmitter();
 
   
@@ -116,4 +117,4 @@
   };
 
 // })();
-module.exports=whiteboard;
+export default whiteboard;

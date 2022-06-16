@@ -1,7 +1,9 @@
 // (function () {
+  import whiteboard from "./whiteboard";
+  import io from 'socket.io-client';
 
-  var whiteboard = require("./whiteboard");
-  var io = require('socket.io-client');
+  //var whiteboard = require("./whiteboard");
+  //var io = require('socket.io-client');
   var socket=io.connect(window.location.origin);
 
   socket.on('connect', function () {
