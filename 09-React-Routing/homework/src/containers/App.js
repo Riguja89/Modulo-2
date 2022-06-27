@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import './App.css';
 import Nav from '../components/Nav.jsx';
 import Cards from '../components/Cards.jsx';
-import { Route, Router} from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import About from '../components/About.jsx';
+import Ciudad from '../components/Ciudad';
+
 const apiKey = '4ae2636d8dfbdc3044bede63951a019b';
 
 function App() {
@@ -12,9 +14,23 @@ function App() {
   function onClose(id) {
     setCities(oldCities => oldCities.filter(c => c.id !== id));
   }
+
+  var ciudad={};
+
+  function detalle(id){
+   
+    cities.forEach(element => {
+      if (parseInt(element.id)===parseInt(id)){
+        ciudad=element;
+        
+      }
+    });
+   
+  }
+
   function onSearch(ciudad) {
     //Llamado a la API del clima
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`)
       .then(r => r.json())
       .then((recurso) => {
         if(recurso.main !== undefined){
@@ -26,10 +42,12 @@ function App() {
             wind: recurso.wind.speed,
             temp: recurso.main.temp,
             name: recurso.name,
-            weather: recurso.weather[0].main,
+            weather: recurso.weather[0].description,
             clouds: recurso.clouds.all,
             latitud: recurso.coord.lat,
-            longitud: recurso.coord.lon
+            longitud: recurso.coord.lon,
+            pres: recurso.main.pressure,
+            hum: recurso.main.humidity
           };
           setCities(oldCities => [...oldCities, ciudad]);
         } else {
@@ -37,34 +55,38 @@ function App() {
         }
       });
   }
-  function onFilter(ciudadId) {
-    let ciudad = cities.filter(c => c.id === parseInt(ciudadId));
-    if(ciudad.length > 0) {
-        return ciudad[0];
-    } else {
-        return null;
-    }
-  }
+
 
 
   const Root = (
     <div className="App">
 
-    <Route
-    path='/'
-    render={() => <Nav onSearch={onSearch} />}
+<Nav onSearch={onSearch} />
+
+<Route
+    exact path='/'
+    render={() => <Cards  cities={cities} onClose={onClose} detalle={detalle}/>}
 />
 <Route
-    path='/about'
+    path='/citi/:id'
+    render={() => <Cards  cities={cities} onClose={onClose} detalle={detalle}/>}
+/>
+
+<Route
+    path='/citi/:id'
+    render={() => <Ciudad   ciudad={ciudad}/>}
+/>
+<Route
+   exact path='/about'
     component={About}
 />
+
 
 
   </div>
  );
 
-  return (Root
-  );
+  return (Root);
 }
 
 export default App;

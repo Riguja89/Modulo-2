@@ -1,0 +1,23 @@
+.ciudad {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    bottom: 10%;
+    right: 10%;
+    padding: 15px;
+    background: rgb(0, 104, 125);
+    color: aliceblue;
+    text-decoration-color: #dce9f5;
+
+    
+}
+h1{
+ color: rgb(176, 201, 208);   
+}
+
+.temp{
+    display: flex;
+}
+.ubicacion{
+    display: flex;
+}

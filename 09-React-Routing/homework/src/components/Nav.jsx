@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../img/logoHenry.png'
+import Logo from '../img/clima.png'
 import SearchBar from './SearchBar.jsx';
 import './Nav.css';
 import { Link } from 'react-router-dom';
@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 
 export default  function Nav({onSearch}) {
   return (
-    <nav className="navbar navbar-dark bg-dark">
+    <nav className="navbar">
       <Link to='/'>
         <span className="navbar-brand">
-          <img id="logoHenry" src={Logo} width="30" height="30" className="d-inline-block align-top" alt="" />
-          Henry - Weather App
+          <img id="logoHenry" src={Logo} width="35" height="35" className="d-inline-block align-top" alt="" />
+          My - Weather App
         </span>
       </Link>
       <Link to='/about'>
